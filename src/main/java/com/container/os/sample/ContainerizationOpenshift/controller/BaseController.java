@@ -24,7 +24,8 @@ public class BaseController {
         logger.info("In Controller");
         NameResponse response = NameResponse.builder()
                 .name(name)
-                .fullname(name).build();
+                .fullname(name)
+                .version("1").build();
         return ResponseEntity.ok().body(response);
     }
 }

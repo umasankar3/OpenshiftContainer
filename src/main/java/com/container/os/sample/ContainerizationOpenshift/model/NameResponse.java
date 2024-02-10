@@ -9,4 +9,5 @@ public class NameResponse {
 
     private String name;
     private String fullname;
+    private String version;
 }
