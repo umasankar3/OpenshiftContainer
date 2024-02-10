@@ -23,7 +23,8 @@ public class BaseController {
     public ResponseEntity<NameResponse> getName(@PathVariable String name){
         logger.info("In Controller");
         NameResponse response = NameResponse.builder()
-                .name(name).build();
+                .name(name)
+                .fullname(name).build();
         return ResponseEntity.ok().body(response);
     }
 }

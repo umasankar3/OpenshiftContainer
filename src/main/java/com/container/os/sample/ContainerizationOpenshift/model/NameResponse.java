@@ -8,4 +8,5 @@ import lombok.*;
 public class NameResponse {
 
     private String name;
+    private String fullname;
 }
