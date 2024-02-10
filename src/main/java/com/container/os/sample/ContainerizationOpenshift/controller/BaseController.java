@@ -19,13 +19,13 @@ public class BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<NameResponse> getName(@PathVariable String name){
+    @GetMapping("/name/{name}/{lastName}")
+    public ResponseEntity<NameResponse> getName(@PathVariable String name,@PathVariable String lastName){
         logger.info("In Controller");
         NameResponse response = NameResponse.builder()
                 .name(name)
-                .fullname(name)
-                .version("1").build();
+                .fullname(name+lastName)
+                .version("2").build();
         return ResponseEntity.ok().body(response);
     }
 }
