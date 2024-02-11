@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @Component
 @RequiredArgsConstructor
 @RestController
@@ -22,6 +25,16 @@ public class BaseController {
     @GetMapping("/name/{name}/{lastName}")
     public ResponseEntity<NameResponse> getName(@PathVariable String name,@PathVariable String lastName){
         logger.info("In Controller");
+        System environment = null;
+        String portAddr = environment.getProperty("server.port");
+        logger.info("I am running on port : "+portAddr);
+        try{
+            String hostname = InetAddress.getLocalHost().getHostAddress();
+            logger.info("HostName : "+hostname);
+        }catch (UnknownHostException e){
+            logger.error("Error on unknownhost : "+e.getMessage());
+        }
+
         NameResponse response = NameResponse.builder()
                 .name(name)
                 .fullname(name+lastName)
